@@ -11,8 +11,8 @@ services:
   service2:
     build:
       context: ./service2
-    ports:
-      - 8198:8198
+    expose:
+      - 8198
     networks:
       - taskNetwork
     
