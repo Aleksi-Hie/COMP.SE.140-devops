@@ -33,15 +33,9 @@ def getSystem2Info(address):
 
 class WebRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        print(self.path)
-        if self.path == "/shutdown":
-            self.send_response(200)
-            getSystem2Info(f'{_service2}:{_service2Port}/shutdown/')
-            return
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
-        
         service1data = getSystemInfo()
         service2data = getSystem2Info(f"{_service2}:{_service2Port}")
         obj = {"service1": service1data,
