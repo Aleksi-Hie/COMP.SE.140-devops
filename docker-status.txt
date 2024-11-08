@@ -1,12 +1,14 @@
 docker container ls
-CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                    NAMES
-fc1f67bb4f11   devops2-service1   "python ./server.py"     4 minutes ago   Up 4 minutes   0.0.0.0:8199->8199/tcp   devops2-service1-1
-fe805cc42259   devops2-service2   "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   8198/tcp                 devops2-service2-1
+CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS         PORTS                            NAMES
+423aaf5d480d   devops2-ngingx       "/docker-entrypoint.…"   4 days ago   Up 3 minutes   80/tcp, 0.0.0.0:8198->8198/tcp   devops2-ngingx-1
+1f3a45da5a1e   devops2-service1_1   "python ./server.py"     4 days ago   Up 3 minutes   8199/tcp                         devops2-service1_1-1
+c76a2251a24b   devops2-service2     "docker-entrypoint.s…"   4 days ago   Up 3 minutes   8200/tcp                         devops2-service2-1
+7fe3ea7616d1   devops2-service1_2   "python ./server.py"     4 days ago   Up 3 minutes   8199/tcp                         devops2-service1_2-1
+5e041db2f094   devops2-service1_3   "python ./server.py"     4 days ago   Up 3 minutes   8199/tcp                         devops2-service1_3-1
 
-docker network ls
+docker network ls   
 NETWORK ID     NAME                  DRIVER    SCOPE
-db9ba40d70cb   bridge                bridge    local
-57048381f75b   devops2_taskNetwork   bridge    local
+80ca1f778acf   bridge                bridge    local
+8f61edd739a0   devops2_taskNetwork   bridge    local
 e7b1402ebb55   host                  host      local
 b870c47f50bb   none                  null      local
-6bd0496ff4cf   qpalhi_default        bridge    local

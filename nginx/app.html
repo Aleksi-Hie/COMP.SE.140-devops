@@ -9,14 +9,14 @@
     <button id="shutdown-btn"> STOP </button>
     <script>
         document.querySelector('#request-btn').addEventListener('click', function() {
-            fetch('http://localhost:8198/backend/')
+            fetch('/backend/')
                 .then(response => response.json())
                 .then(data => {
                     document.querySelector('textarea').value = JSON.stringify(data, null, 2);
                 });
         });
         document.querySelector('#stop-btn').addEventListener('click', function() {
-            fetch('http://localhost:8198/backend/shutdown/');
+            fetch('/backend/shutdown/');
         });
     </script>
     <h2>Response</h2>
