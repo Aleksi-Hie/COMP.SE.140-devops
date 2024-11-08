@@ -2,8 +2,8 @@ const dns = require('dns');
 const {exec} = require('child_process');
 const {createServer} = require('http');
 
-const serviceName = 'Service2';
-const port = 8198
+const serviceName = process.env.SERVICE_NAME || 'service2'
+const port = 8200
 function IpLookup(){
     return new Promise((resolve, reject) => {
         dns.lookup(serviceName, (err, address, family) => {
@@ -63,6 +63,13 @@ async function getData(){
 
 
 const server = createServer((req, res) => {
+    console.log(req.url)
+    if (req.url === '/shutdown/') {
+        res.statusCode = 200;
+        res.end();
+        process.exit(0);
+    }
+
     res.statusCode = 200;
     getData().then((data) => {
         res.setHeader('Content-Type', 'application/json');

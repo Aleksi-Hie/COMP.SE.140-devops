@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App</title>
+</head>
+<body>
+    <h1>App</h1>
+    <button id="request-btn"> REQUEST </button>
+    <button id="shutdown-btn"> STOP </button>
+    <script>
+        document.querySelector('#request-btn').addEventListener('click', function() {
+            fetch('http://localhost:8198/backend/')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('textarea').value = JSON.stringify(data, null, 2);
+                });
+        });
+        document.querySelector('#stop-btn').addEventListener('click', function() {
+            fetch('http://localhost:8198/backend/shutdown/');
+        });
+    </script>
+    <h2>Response</h2>
+    <textarea style="width: 100%; height: 300px;"></textarea>
+
+
+</body>
+</html>
